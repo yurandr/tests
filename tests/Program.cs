@@ -11,8 +11,7 @@
                                 , new Node(new byte[] { 5 }, null))))
                 );
             Print(list);
-            Reverse(ref list);
-            Print(list);
+            Print(Reverse(list));
         }
 
         public static void Print(Node? current)
@@ -20,13 +19,13 @@
             while (null != current)
             {
                 var data = current.Data ?? new byte[0];
-                Console.Write($"[{string.Join(',', data)}]");
+                Console.Write($"[{string.Join(',', data)}]"); // не сильно хорошо конечно джойнить, лучше бы поштуно выводить в консоль
                 current = current.Next;
             }
             Console.WriteLine();
         }
 
-        public static void Reverse(ref Node? head)
+        public static Node? Reverse(Node? head)
         {
             if (null != head)
             {
@@ -44,6 +43,7 @@
                 current.Next = previous;
                 head = current;
             }
+            return head;
         }
 
         public class Node
